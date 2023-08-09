@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Message</title>
+</head>
+<body>
+    <h1>Send a Message</h1>
+    <form id="message-form">
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message">
+        <button type="submit">Send</button>
+    </form>
+    <p id="response-message"></p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageForm = document.getElementById('message-form');
+            const responseMessage = document.getElementById('response-message');
+
+            messageForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const messageInput = document.getElementById('message').value;
+                const url = 'http://127.0.0.1:8000/send';
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: messageInput })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    responseMessage.textContent = data.message;
+                } else {
+                    responseMessage.textContent = data.error;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
