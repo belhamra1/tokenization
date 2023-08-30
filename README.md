@@ -1,4 +1,4 @@
-DEVELOPMENT OF A TOKENIZATION SYSTEM FRO ONLINE PAYMENT 
+DEVELOPMENT OF A TOKENIZATION SYSTEM For ONLINE PAYMENT 
 
 This project involves the development of a tokenization system for online payment using Python Flask. The main components of the project are two files: tok.py and authentification.py. The system allows users to tokenize and detokenize sensitive payment information, enhancing security during online transactions.
 
